@@ -1,0 +1,21 @@
+.tile {
+    height: 38px;
+    display: flex;
+    gap: 6px;
+    border-radius: 50px;
+    padding: 10px;
+    background: #f7f7f7;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.tile__text {
+    font-weight: 400;
+    font-size: 16px;
+    color: #202020;
+}
