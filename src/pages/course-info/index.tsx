@@ -1,25 +1,49 @@
 "use client";
 import Image from "next/image";
 import { useCourseCtx } from "@/shared/context/courses-context";
-import { cn } from "@/shared/lib/classnames";
+import { useIsCourseAdded } from "@/features/workout/lib/courseIsAdded";
+import { useCourses } from "@/shared/api";
+import { useAuth } from "@/shared/lib/auth";
+import { notifyWarning, notifySuccess } from "@/shared/lib/notification";
+import { ApiError } from "@/shared/api/client";
+
 import { Button } from "@/shared/ui/button";
 import { ForYouTile } from "@/components/ui/tile";
 import styles from "./info.module.css";
+
 
 interface CourseInfoProps {
   courseId: string;
 }
 export default function CourseInfo({ courseId }: CourseInfoProps) {
-  const { findById, courses } = useCourseCtx();
+  const { addCourse } = useCourses();
+  const { findById } = useCourseCtx();
+  const isAdded = useIsCourseAdded(courseId);
+  const { isAuth } = useAuth();
   const course = findById(courseId);
-  console.log(course);
+
+  const onAdd = async () => {
+    if (!isAuth) {
+      notifyWarning("Для добавления курса необходимо войти в аккаунт");
+      return;
+    }
+    try {
+      await addCourse(courseId);
+      notifySuccess(
+        "Курс добавлен. Просмотреть добавленные курсы можно на странице в профиле",
+      );
+    } catch (reason) {
+      const err = reason as ApiError;
+      notifyWarning(err.message);
+    }
+  };
 
   return (
     <>
       <div className={styles.wrapper__img}>
         <Image
           className={styles.course__img}
-          src={`skill_card_${course?.order}.svg`}
+          src={`/skill_card_${course?.order}.svg`}
           alt="yoga"
           width={1160}
           height={310}
@@ -64,13 +88,30 @@ export default function CourseInfo({ courseId }: CourseInfoProps) {
                 помогают противостоять стрессам
               </li>
             </ul>
-            <Button className={styles.way__btn}>
-              Войдите, чтобы добавить курс
-            </Button>
+            {!isAuth ? (
+              <Button
+                className={styles.way__btn}
+                onClick={() =>
+                  notifyWarning(
+                    "Для добавления курса необходимо войти в аккаунт",
+                  )
+                }
+              >
+                Войдите, чтобы добавить курс
+              </Button>
+            ) : !isAdded ? (
+              <Button className={styles.way__btn} onClick={onAdd}>
+                Добавить курс
+              </Button>
+            ) : (
+              <Button className={styles.way__btn} onClick={() => notifyWarning('Курс уже был добавлен')}>
+                Курс уже добавлен
+              </Button>
+            )}
           </div>
           <Image
             className={styles.way__img}
-            src="info_way.svg"
+            src="/info_way.svg"
             alt="men"
             width={700}
             height={688}

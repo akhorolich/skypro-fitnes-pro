@@ -18,7 +18,7 @@ function handleAxiosError(err: unknown): never {
 
 export async function request<RequestType, ResponseType>(config: {
   url: string;
-  method?: "get" | "post" | "put" | "delete";
+  method?: "get" | "post" | "put" | "delete" | "patch";
   data?: RequestType;
 }): Promise<ResponseType> {
   try {
@@ -29,7 +29,6 @@ export async function request<RequestType, ResponseType>(config: {
     });
     return res.data;
   } catch (err) {
-    console.log("in request", err);
     handleAxiosError(err);
   }
 }

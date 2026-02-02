@@ -5,6 +5,10 @@
     justify-content: space-between;
 }
 
+.header__content {
+    position: relative;
+}
+
 .header__logo {
     margin-bottom: 7px;
 }
@@ -22,4 +26,20 @@
 
 .header__btn:hover {
     background-color: #C6FF00;
+}
+
+.btns__block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu__username {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.menu__exit_btn {
+    border: 1px solid #000;
+    background: none
 }

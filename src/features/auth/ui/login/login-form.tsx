@@ -14,12 +14,11 @@ interface LoginFormProps {
 
 export const LoginForm = ({ onOpenRegister, closeModal }: LoginFormProps) => {
   const { register, handleSubmit } = useForm<FormValues>();
-  const { login, getMe, loading, error } = useLogin();
+  const { login, loading, error } = useLogin();
 
   const onSubmit = async (data: FormValues) => {
     try {
       await login(data);
-      await getMe();
       await closeModal?.();
       notifySuccess("Вы успешно вошли!");
     } catch (err) {
@@ -31,7 +30,7 @@ export const LoginForm = ({ onOpenRegister, closeModal }: LoginFormProps) => {
     <div className={styles.form}>
       <Image
         className={styles.logo}
-        src={"logo.svg"}
+        src={"/logo.svg"}
         alt="logo"
         width={220}
         height={35}

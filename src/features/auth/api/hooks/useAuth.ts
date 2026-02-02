@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { authApi } from "../auth";
 import type { LoginRequest, RegisterRequest } from "../types";
-import { ApiError } from "next/dist/server/api-utils";
+import { ApiError } from "@/shared/api/client";
+import { useAuth } from "@/shared/lib/auth";
 
 export function useLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { fetchMe } = useAuth();
 
   const login = async (payload: LoginRequest) => {
     setLoading(true);
@@ -16,11 +18,11 @@ export function useLogin() {
       if (typeof window !== "undefined") {
         localStorage.setItem("token", data.token);
       }
+      await fetchMe();
       return data;
     } catch (err) {
       const requestError = err as ApiError;
       setError(requestError.message);
-      throw err;
     } finally {
       setLoading(false);
     }

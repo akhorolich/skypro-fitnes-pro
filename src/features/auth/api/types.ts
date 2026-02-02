@@ -1,6 +1,7 @@
 export type User = {
-  email: "gusi1337@mail.ru";
-  selectedCourses: [];
+  _id: string;
+  email: string;
+  selectedCourses: string[];
   courseProgress: [];
 };
 

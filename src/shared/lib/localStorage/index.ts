@@ -1,7 +1,7 @@
-export const getUser = () => {
-    const user = window.localStorage.getItem('user')
-    if(!user) return null;
-    return JSON.stringify(user);
+export const getUserEmail = () => {
+    const email = window.localStorage.getItem('user')
+    if(!email) return null;
+    return email;
 }
 
 export const getTokenBool = () => {

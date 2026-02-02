@@ -11,11 +11,16 @@ export type Course = {
   difficulty: string;
   durationInDays: number;
   dailyDurationInMinutes: DailyDuration;
-  order?: number
+  order?: number;
 };
 
 export type Exercise = { name: string; quantity?: number; _id?: string };
-export type Workout = { _id: string; name: string; video?: string; exercises?: Exercise[] };
+export type Workout = {
+  _id: string;
+  name: string;
+  video?: string;
+  exercises?: Exercise[];
+};
 
 export type WorkoutProgress = {
   workoutId: string;
@@ -28,3 +33,5 @@ export type CourseProgress = {
   courseCompleted: boolean;
   workoutsProgress: WorkoutProgress[];
 };
+
+export type CoursesResponse = { message: string };

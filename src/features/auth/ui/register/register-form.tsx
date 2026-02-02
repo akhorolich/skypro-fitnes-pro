@@ -30,7 +30,7 @@ export const RegisterForm = ({ onOpenLogin }: { onOpenLogin?: () => void }) => {
     <div className={styles.form}>
       <Image
         className={styles.logo}
-        src={"logo.svg"}
+        src={"/logo.svg"}
         alt="logo"
         width={220}
         height={35}
