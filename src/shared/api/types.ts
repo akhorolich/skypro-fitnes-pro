@@ -2,7 +2,7 @@ export type DailyDuration = { from: string; to: string };
 export type Course = {
   _id: string;
   nameRU: string;
-  nameEN?: string;
+  nameEN: string;
   description: string;
   directions: string[];
   fitting: string[];
@@ -10,10 +10,10 @@ export type Course = {
   difficulty: string;
   durationInDays: number;
   dailyDurationInMinutes: DailyDuration;
-  order?: number;
+  order: number;
 };
 
-export type Exercise = { name: string; quantity?: number; _id: string };
+export type Exercise = { name: string; quantity: number; _id: string };
 export type Workout = {
   _id: string;
   name: string;

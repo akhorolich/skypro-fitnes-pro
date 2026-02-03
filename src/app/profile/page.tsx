@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useEffect } from "react";
 import { useCourseCtx } from "@/shared/context/courses-context";
 import { useAuth } from "@/shared/context/auth-context";
 import { useRedirect } from "@/shared/hooks/useRedirect";
@@ -12,13 +13,17 @@ import styles from "./page.module.css";
 export default function Profile() {
   const { redirectTo } = useRedirect();
   const { courses } = useCourseCtx();
-  const { user, logout } = useAuth();
+  const { user, logout, isAuth } = useAuth();
+
+  useEffect(() => {
+    if (!isAuth) redirectTo(paths.home);
+  }, [isAuth]);
 
   const onLogout = () => {
     logout();
     redirectTo(paths.home);
   };
-  console.log(user, courses)
+  
   const userCourses = getSelectedCourses(user?.selectedCourses, courses);
   
   return (

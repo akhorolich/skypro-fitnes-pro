@@ -1,0 +1,17 @@
+.container {
+    max-width: 426px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 40px;
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 40px;
+    color: #000;
+    text-align: center;
+}

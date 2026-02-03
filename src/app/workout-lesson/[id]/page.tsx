@@ -1,5 +1,4 @@
 import { WorkoutLesson } from "@/pages/lesson";
-import { workoutsApi } from "@/shared/api";
 
 interface WorkoutLessonPageProps {
   params: Promise<{ id: string }>;

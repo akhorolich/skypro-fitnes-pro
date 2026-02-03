@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { authApi } from "@/features/auth/api/auth";
 import { User } from "@/features/auth/api/types";
 import { AuthCtx, IAuthContext } from "@/shared/context/auth-context";
@@ -30,7 +30,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const relogin = () => {
     if (typeof window === "undefined") return;
     const token = window.localStorage.getItem("token");
-    if (token) fetchMe();
+    if (token) {
+      fetchMe();
+      return;
+    }
   };
 
   const logout = () => {

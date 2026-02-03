@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { progressApi } from "../progress";
-import type { CourseProgress, WorkoutProgress } from "../types";
 
 export function useProgress() {
   const [loading, setLoading] = useState(false);

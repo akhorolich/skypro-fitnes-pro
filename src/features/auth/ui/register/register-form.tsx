@@ -4,7 +4,8 @@ import styles from "./register.module.css";
 import { Button } from "@/shared/ui/button";
 import { useForm } from "react-hook-form";
 import { useRegister } from "@/features/auth/api/hooks/useAuth";
-import { notifySuccess, notifyWarning } from "@/shared/lib/notification";
+import { notifyError, notifySuccess, notifyWarning } from "@/shared/lib/notification";
+import { ApiError } from "@/shared/api/client";
 
 type FormValues = { email: string; password: string; repeat: string };
 
@@ -21,8 +22,9 @@ export const RegisterForm = ({ onOpenLogin }: { onOpenLogin?: () => void }) => {
       await registerAction({ email: data.email, password: data.password });
       onOpenLogin?.();
       notifySuccess('Вы успешно зарегистрировались!');
-    } catch (err) {
-      console.error(err);
+    } catch (reason) {
+      const err = reason as ApiError;
+      notifyError(err.message);
     }
   };
 

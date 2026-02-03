@@ -15,8 +15,6 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  console.log(courses);
-
   return (
     <>
       <div className={styles.title}>

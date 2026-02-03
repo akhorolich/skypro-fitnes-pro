@@ -4,8 +4,6 @@ import { axiosInstance } from "@/shared/axios";
 export type ApiError = { status: number; message: string };
 
 function handleAxiosError(err: unknown): never {
-  console.log("handleAxiosError", err);
-
   if (axios.isAxiosError(err)) {
     const axiosErr = err as AxiosError;
     const status = axiosErr.response?.status ?? 0;

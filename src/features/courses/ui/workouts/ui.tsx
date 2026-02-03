@@ -1,20 +1,26 @@
 "use client";
-import { Exercise } from "@/shared/api";
+import { useEffect, useState } from "react";
+import { Workout } from "@/shared/api";
 import styles from "./workouts.module.css";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/classnames";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { notifyWarning } from "@/shared/lib/notification";
 import { paths } from "@/shared/config/paths";
+import { useProgress } from "@/shared/api/hooks/useProgress";
 
 interface WorkoutsProps {
-  exercise: Exercise[];
+  exercise: Workout[];
   courseName: string;
+  courseId: string;
 }
-export const Workouts = ({ exercise, courseName }: WorkoutsProps) => {
+export const Workouts = ({ exercise, courseName, courseId }: WorkoutsProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const { fetchWorkoutProgress } = useProgress();
+  const [completed, setCompleted] = useState<Record<string, boolean>>({});
 
   const extractExerciseName = (exerciseName: string) => {
     if (courseName !== "Йога") return exerciseName;
@@ -23,7 +29,6 @@ export const Workouts = ({ exercise, courseName }: WorkoutsProps) => {
 
   const addQuery = (lessonId: string) => {
     const url = new URLSearchParams(searchParams?.toString());
-    console.log(url);
     url.set("lesson", lessonId);
     const withParam = url.toString();
     router?.push(pathname + "?" + withParam);
@@ -32,10 +37,23 @@ export const Workouts = ({ exercise, courseName }: WorkoutsProps) => {
   const goToLesson = () => {
     const url = new URLSearchParams(searchParams?.toString());
     const lessonId = url.get("lesson");
+    if (!lessonId) {
+      notifyWarning("Выберите тренировку");
+      return;
+    }
     router?.push(paths.lesson + `/${lessonId}`);
   };
 
-  console.log(exercise);
+  useEffect(() => {
+    if (!courseId) return;
+    exercise.forEach(async (wk) => {
+      try {
+        const res = await fetchWorkoutProgress(courseId, wk._id);
+        setCompleted((prev) => ({ ...prev, [wk._id]: Boolean(res.workoutCompleted) }));
+      } catch (err) {
+      }
+    });
+  }, [courseId]);
 
   return (
     <div className={styles.workouts__container}>
@@ -47,20 +65,19 @@ export const Workouts = ({ exercise, courseName }: WorkoutsProps) => {
             className={styles.lesson__container}
             onClick={(e) => {
               e.stopPropagation();
-              addQuery(lesson._id);
-              console.log(lesson._id);
-              
+              addQuery(lesson._id);              
             }}
           >
             <li className={styles.workout__item}>
               <label className={styles.radio__label} htmlFor={lesson._id}>
                 <input
                   className={cn(styles.radio__btn, {
-                    [styles.isComplitedLesson]: false,
+                    [styles.isComplitedLesson]: !!completed[lesson._id],
                   })}
                   type="radio"
                   name="workout"
                   id={lesson._id}
+                  disabled={!!completed[lesson._id]}
                 />
                 <div className={styles.text__container}>
                   <p className={styles.lesson__name}>

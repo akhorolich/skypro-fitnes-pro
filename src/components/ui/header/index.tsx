@@ -63,37 +63,40 @@ export const Header = () => {
           </Button>
         ) : (
           <>
-            <Button className={styles.header__btn} onClick={openMenu}>
-              {user?.email || "Профиль"}
-            </Button>
-            {menuOpen && (
-              <ProfileHeaderModal onClose={closeMenu}>
-                <p className={styles.menu__username}>{user?.email}</p>
-                <div className={styles.btns__block}>
-                  <Button
-                    className={styles.header__btn}
-                    onClick={onProfile}
-                  >
-                    Мой профиль
-                  </Button>
-                  <Button className={styles.menu__exit_btn} onClick={onLogout}>
-                    Выйти
-                  </Button>
-                </div>
-              </ProfileHeaderModal>
-            )}
-            {/* {menuOpen && (
-            <Modal onClose={closeMenu}>
-              <div className={styles.userMenu}>
-                <Button className={styles.menuBtn} onClick={onProfile}>
-                  Мой профиль
-                </Button>
-                <Button className={styles.menuBtn} onClick={onLogout}>
-                  Выйти
-                </Button>
-              </div>
-            </Modal>
-          )} */}
+            <div className={styles.header__profile}>
+              <Button className={styles.header__btn} onClick={openMenu}>
+                <Image
+                  src="/profile.svg"
+                  alt="profile"
+                  width={50}
+                  height={50}
+                  className={styles.profile__avatar}
+                />
+                <span className={styles.profile__name}>{user?.email}</span>
+                <span className={styles.arrow}>
+                  <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0624 0.707154L6.38477 6.38477L0.707152 0.707154" stroke="black" strokeWidth="2" />
+                  </svg>
+                </span>
+              </Button>
+
+              {menuOpen && (
+                <ProfileHeaderModal onClose={closeMenu}>
+                  <p className={styles.menu__username}>{user?.email}</p>
+                  <div className={styles.btns__block}>
+                    <Button
+                      className={styles.header__btn}
+                      onClick={onProfile}
+                    >
+                      Мой профиль
+                    </Button>
+                    <Button className={styles.menu__exit_btn} onClick={onLogout}>
+                      Выйти
+                    </Button>
+                  </div>
+                </ProfileHeaderModal>
+              )}
+            </div>
           </>
         )}
       </div>
