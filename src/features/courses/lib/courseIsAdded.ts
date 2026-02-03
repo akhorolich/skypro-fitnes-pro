@@ -1,4 +1,4 @@
-import { useAuth } from "@/shared/lib/auth";
+import { useAuth } from "@/shared/context/auth-context";
 
 export const useIsCourseAdded = (courseId: string) => {
   const { user } = useAuth();

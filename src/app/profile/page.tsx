@@ -1,33 +1,26 @@
 "use client";
 import Image from "next/image";
-import { Button } from "@/shared/ui/button";
-import { CourseCard } from "@/features/workout/ui/course.card";
-import styles from "./page.module.css";
 import { useCourseCtx } from "@/shared/context/courses-context";
-import { useAuth } from "@/shared/lib/auth";
+import { useAuth } from "@/shared/context/auth-context";
 import { useRedirect } from "@/shared/hooks/useRedirect";
 import { paths } from "@/shared/config/paths";
+import { getSelectedCourses } from "@/features/profile/lib/getSelectedCourses";
+
+import { Button } from "@/shared/ui/button";
+import styles from "./page.module.css";
 
 export default function Profile() {
   const { redirectTo } = useRedirect();
   const { courses } = useCourseCtx();
   const { user, logout } = useAuth();
 
-  const selectedCourses = () => {
-    const coursesSet = new Set(user?.selectedCourses);
-    const selected = courses.filter((course) => coursesSet.has(course._id));
-    console.log(selected);
-
-    return selected.map((course) => (
-      <CourseCard key={course._id} course={course} isProfile={true} />
-    ));
-  };
-
   const onLogout = () => {
     logout();
     redirectTo(paths.home);
   };
-
+  console.log(user, courses)
+  const userCourses = getSelectedCourses(user?.selectedCourses, courses);
+  
   return (
     <>
       <div className={styles.wrapper}>
@@ -46,7 +39,7 @@ export default function Profile() {
         </div>
         <div className={styles.courses}>
           <h2 className={styles.courses__text}>Мои курсы</h2>
-          <div className={styles.courses__list}>{selectedCourses()}</div>
+          <div className={styles.courses__list}>{userCourses}</div>
         </div>
       </div>
     </>

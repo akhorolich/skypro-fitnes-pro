@@ -1,4 +1,3 @@
-// Shared API types for Courses / Workouts / Progress
 export type DailyDuration = { from: string; to: string };
 export type Course = {
   _id: string;
@@ -14,12 +13,12 @@ export type Course = {
   order?: number;
 };
 
-export type Exercise = { name: string; quantity?: number; _id?: string };
+export type Exercise = { name: string; quantity?: number; _id: string };
 export type Workout = {
   _id: string;
   name: string;
-  video?: string;
-  exercises?: Exercise[];
+  video: string;
+  exercises: Exercise[];
 };
 
 export type WorkoutProgress = {

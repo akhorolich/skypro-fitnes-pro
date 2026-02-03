@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { CourseCard } from './course.card';
-import { AuthProvider } from '@/shared/lib/auth';
+import { AuthProvider } from "@/app/providers/authProvider";
 
 jest.mock('next/navigation', () => ({ useRouter: () => ({ push: jest.fn() }) }));
 

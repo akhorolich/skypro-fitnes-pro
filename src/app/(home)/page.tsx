@@ -5,20 +5,16 @@ import { useEffect } from "react";
 import { useCourseCtx } from "@/shared/context/courses-context";
 
 import { Button } from "@/shared/ui/button";
-import { CourseCard } from "@/features/workout/ui/course.card";
+import { CourseCard } from "@/features/courses/ui/course.card";
 import styles from "./page.module.css";
 
 export default function Home() {
-  const { addCoursesInCtx, courses } = useCourseCtx();
-  const { fetchCourses } = useCourses();
+  const { courses } = useCourseCtx();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  useEffect(() => {
-    fetchCourses().then(addCoursesInCtx);
-  }, []);
   console.log(courses);
 
   return (
@@ -31,11 +27,7 @@ export default function Home() {
       </div>
       <div className={styles.content}>
         {courses?.map((course) => (
-          <CourseCard
-            key={course._id}
-            course={course}
-            isProfile={false}
-          />
+          <CourseCard key={course._id} course={course} isProfile={false} />
         ))}
       </div>
       <div className={styles.footer}>

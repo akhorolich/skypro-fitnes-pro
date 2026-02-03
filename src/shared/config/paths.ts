@@ -1,4 +1,5 @@
 export const paths = {
     home: '/',
-    profile: '/profile'
+    profile: '/profile',
+    lesson: '/workout-lesson'
 }

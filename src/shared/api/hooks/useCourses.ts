@@ -3,11 +3,12 @@ import { useState } from "react";
 import { coursesApi } from "../courses";
 import type { Course } from "../types";
 import { ApiError } from "../client";
-import { useAuth } from "@/shared/lib/auth";
+import { useAuth } from "@/shared/context/auth-context";
 
 export function useCourses() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { user, addSelectedCourse, removeSelectedCourse, setUser } = useAuth();
 
   async function fetchCourses() {
     setLoading(true);
@@ -38,7 +39,6 @@ export function useCourses() {
     }
   }
 
-  const { user, addSelectedCourse, removeSelectedCourse, setUser } = useAuth();
 
   async function addCourse(courseId: string) {
     setLoading(true);
@@ -46,12 +46,10 @@ export function useCourses() {
 
     const prev = user?.selectedCourses ?? [];
     try {
-      // optimistic update
       if (user) addSelectedCourse(courseId);
       const res = await coursesApi.addCourseToUser(courseId);
       return res;
     } catch (err: unknown) {
-      // revert
       if (user) setUser({ ...user, selectedCourses: prev });
       const requestError = err as ApiError;
       setError(requestError.message);
@@ -67,13 +65,25 @@ export function useCourses() {
 
     const prev = user?.selectedCourses ?? [];
     try {
-      // optimistic update
       if (user) removeSelectedCourse(courseId);
       const res = await coursesApi.deleteCourseFromUser(courseId);
       return res;
     } catch (err: unknown) {
-      // revert
       if (user) setUser({ ...user, selectedCourses: prev });
+      const requestError = err as ApiError;
+      setError(requestError.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+    async function fetchWorkoutsCourse(courseId: string) {
+    setLoading(true);
+    setError(null);
+    try {
+      return await coursesApi.getCourseWorkouts(courseId);
+    } catch (err: unknown) {
       const requestError = err as ApiError;
       setError(requestError.message);
       throw err;
@@ -102,6 +112,7 @@ export function useCourses() {
     addCourse,
     removeCourse,
     resetCourse,
+    fetchWorkoutsCourse,
     loading,
     error,
   } as const;

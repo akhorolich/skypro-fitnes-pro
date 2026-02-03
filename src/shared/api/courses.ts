@@ -1,4 +1,3 @@
-import { axiosInstance } from "@/shared/axios";
 import type { Course, CoursesResponse, Workout } from "./types";
 import { request } from "./client";
 

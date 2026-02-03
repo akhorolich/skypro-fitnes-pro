@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { CoursesProvider } from "./providers/coursesProvider";
 import { Suspense } from "react";
 import "./globals.css";
-import { AuthProvider } from "@/shared/lib/auth";
+import { AuthProvider } from "./providers/authProvider";
 
 const RobotoSans = Roboto({
   variable: "--font-roboto-sans",

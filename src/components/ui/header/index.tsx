@@ -8,7 +8,7 @@ import { Button } from "@/shared/ui/button";
 import { Modal } from "@/shared/ui/modal";
 import { LoginForm } from "@/features/auth/ui/login/login-form";
 import { RegisterForm } from "@/features/auth/ui/register/register-form";
-import { useAuth } from "@/shared/lib/auth";
+import { useAuth } from "@/shared/context/auth-context";
 import { notifyWarning } from "@/shared/lib/notification";
 import { ProfileHeaderModal } from "./modal";
 import styles from "./header.module.css";

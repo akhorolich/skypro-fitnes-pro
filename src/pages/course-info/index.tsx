@@ -1,16 +1,15 @@
 "use client";
 import Image from "next/image";
 import { useCourseCtx } from "@/shared/context/courses-context";
-import { useIsCourseAdded } from "@/features/workout/lib/courseIsAdded";
+import { useIsCourseAdded } from "@/features/courses/lib/courseIsAdded";
 import { useCourses } from "@/shared/api";
-import { useAuth } from "@/shared/lib/auth";
+import { useAuth } from "@/shared/context/auth-context";
 import { notifyWarning, notifySuccess } from "@/shared/lib/notification";
 import { ApiError } from "@/shared/api/client";
 
 import { Button } from "@/shared/ui/button";
 import { ForYouTile } from "@/components/ui/tile";
 import styles from "./info.module.css";
-
 
 interface CourseInfoProps {
   courseId: string;
@@ -104,7 +103,10 @@ export default function CourseInfo({ courseId }: CourseInfoProps) {
                 Добавить курс
               </Button>
             ) : (
-              <Button className={styles.way__btn} onClick={() => notifyWarning('Курс уже был добавлен')}>
+              <Button
+                className={styles.way__btn}
+                onClick={() => notifyWarning("Курс уже был добавлен")}
+              >
                 Курс уже добавлен
               </Button>
             )}
