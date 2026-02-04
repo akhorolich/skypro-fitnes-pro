@@ -120,6 +120,10 @@
     z-index: -1;
 }
 
+.way__img__mobile {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .for-you__text, .directions__text, .way__text {
         font-weight: 500;

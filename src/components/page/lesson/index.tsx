@@ -6,12 +6,12 @@ import {
   WorkoutProgress,
 } from "@/shared/api";
 import { useEffect, useState, useMemo } from "react";
-import { useCourseCtx } from "@/shared/context/courses-context";
+import { useCourseCtx } from "@/shared/context/use-courses-context";
 
 import { Button } from "@/shared/ui/button";
 import { ProgressBar } from "@/shared/ui/progress-bar";
 import { Modal } from "@/shared/ui/modal";
-import { ProgressForm } from "../../features/lessons/ui/progress-form/ProgressForm";
+import { ProgressForm } from "../../../features/lessons/ui/progress-form/ProgressForm";
 import { SuccessModal } from "@/features/lessons/ui/succsess-modal";
 import styles from "./workout.module.css";
 
@@ -19,7 +19,7 @@ interface WorkoutLessonProps {
   lessonId: string;
 }
 
-export const WorkoutLesson = ({ lessonId }: WorkoutLessonProps) => {
+export default function WorkoutLesson({ lessonId }: WorkoutLessonProps) {
   const [lesson, setLesson] = useState<Workout | null>(null);
   const [progress, setProgress] = useState<WorkoutProgress | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -159,4 +159,4 @@ export const WorkoutLesson = ({ lessonId }: WorkoutLessonProps) => {
       )}
     </>
   );
-};
+}

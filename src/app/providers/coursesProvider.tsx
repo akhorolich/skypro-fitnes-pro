@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { CourseCtx } from "@/shared/context/courses-context";
-import { useCourses, type Course } from "@/shared/api";
+import { useCourses } from "@/shared/api/hooks/useCourses";
+import type { Course } from "@/shared/api";
 
 interface CoursesProviderProps {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ interface CoursesProviderProps {
 
 export const CoursesProvider = ({ children }: CoursesProviderProps) => {
   const [courses, setCourses] = useState<Course[] | []>([]);
-  const {fetchCourses} = useCourses();
+  const { fetchCourses } = useCourses();
 
   const addCoursesInCtx = (courses: Course[]) => setCourses(courses);
 
@@ -21,7 +22,7 @@ export const CoursesProvider = ({ children }: CoursesProviderProps) => {
 
   useEffect(() => {
     fetchCourses().then(addCoursesInCtx);
-  }, [])
+  }, []);
 
   return (
     <CourseCtx.Provider value={{ addCoursesInCtx, findById, courses }}>

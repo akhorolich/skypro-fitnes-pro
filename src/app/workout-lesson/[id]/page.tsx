@@ -1,5 +1,4 @@
-import { WorkoutLesson } from "@/pages/lesson";
-
+import WorkoutLesson from "@/components/page/lesson";
 interface WorkoutLessonPageProps {
   params: Promise<{ id: string }>;
 }

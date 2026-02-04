@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useCourses } from "@/shared/api";
-import { useEffect } from "react";
-import { useCourseCtx } from "@/shared/context/courses-context";
+import { useCourseCtx } from "@/shared/context/use-courses-context";
 
 import { Button } from "@/shared/ui/button";
 import { CourseCard } from "@/features/courses/ui/course.card";
@@ -21,7 +19,13 @@ export default function Home() {
         <h1 className={styles.title__slogan}>
           Начните заниматься спортом и улучшите качество жизни
         </h1>
-        <Image className={styles.slogan__img} src="/slogan.svg" alt="slogan" width={288} height={120} />
+        <Image
+          className={styles.slogan__img}
+          src="/slogan.svg"
+          alt="slogan"
+          width={288}
+          height={120}
+        />
       </div>
       <div className={styles.content}>
         {courses?.map((course) => (

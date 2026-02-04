@@ -1,4 +1,5 @@
-import { useAuth } from "@/shared/context/auth-context";
+"use client";
+import { useAuth } from "@/shared/context/use-auth-context";
 
 export const useIsCourseAdded = (courseId: string) => {
   const { user } = useAuth();
@@ -6,7 +7,10 @@ export const useIsCourseAdded = (courseId: string) => {
   return user.selectedCourses.includes(courseId);
 };
 
-export const courseIsAdded = (courseId: string, userSelectedCourses?: string[]) => {
+export const courseIsAdded = (
+  courseId: string,
+  userSelectedCourses?: string[],
+) => {
   if (!userSelectedCourses) return false;
   return userSelectedCourses.includes(courseId);
 };

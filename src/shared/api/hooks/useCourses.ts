@@ -3,7 +3,7 @@ import { useState } from "react";
 import { coursesApi } from "../courses";
 import type { Course } from "../types";
 import { ApiError } from "../client";
-import { useAuth } from "@/shared/context/auth-context";
+import { useAuth } from "@/shared/context/use-auth-context";
 
 export function useCourses() {
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,6 @@ export function useCourses() {
       setLoading(false);
     }
   }
-
 
   async function addCourse(courseId: string) {
     setLoading(true);
@@ -78,7 +77,7 @@ export function useCourses() {
     }
   }
 
-    async function fetchWorkoutsCourse(courseId: string) {
+  async function fetchWorkoutsCourse(courseId: string) {
     setLoading(true);
     setError(null);
     try {

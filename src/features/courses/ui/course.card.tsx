@@ -4,12 +4,11 @@ import {
   Course,
   CourseProgress,
   useCourses,
-  useWorkouts,
   Workout,
 } from "@/shared/api";
 import { useRouter } from "next/navigation";
 import { cn } from "@/shared/lib/classnames";
-import { useAuth } from "@/shared/context/auth-context";
+import { useAuth } from "@/shared/context/use-auth-context";
 import {
   notifyError,
   notifySuccess,
@@ -40,9 +39,8 @@ export const CourseCard = ({ course, isProfile = false }: CourseCardProps) => {
   const [courseCompleted, setCourseCompleted] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
-
-  const { addCourse, removeCourse, fetchWorkoutsCourse, resetCourse } =
-    useCourses();
+  
+  const { addCourse, removeCourse, fetchWorkoutsCourse, resetCourse } = useCourses();
   const { isAuth } = useAuth();
   const router = useRouter();
 

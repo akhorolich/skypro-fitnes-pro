@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useCourseCtx } from "@/shared/context/courses-context";
+import { useCourseCtx } from "@/shared/context/use-courses-context";
 import { useIsCourseAdded } from "@/features/courses/lib/courseIsAdded";
-import { useCourses } from "@/shared/api";
-import { useAuth } from "@/shared/context/auth-context";
+import { Course, CoursesResponse, useCourses } from "@/shared/api";
+import { useAuth } from "@/shared/context/use-auth-context";
 import { notifyWarning, notifySuccess } from "@/shared/lib/notification";
 import { ApiError } from "@/shared/api/client";
 
@@ -17,8 +17,8 @@ interface CourseInfoProps {
 export default function CourseInfo({ courseId }: CourseInfoProps) {
   const { addCourse } = useCourses();
   const { findById } = useCourseCtx();
-  const isAdded = useIsCourseAdded(courseId);
   const { isAuth } = useAuth();
+  const isAdded = useIsCourseAdded(courseId);
   const course = findById(courseId);
 
   const onAdd = async () => {

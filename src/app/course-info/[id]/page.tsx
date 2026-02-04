@@ -1,4 +1,4 @@
-import CourseInfo from "@/pages/course-info";
+import CourseInfo from "@/components/page/course-info";
 
 interface CourseInfoPageProps {
   params: Promise<{ id: string }>;

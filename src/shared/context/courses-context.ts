@@ -1,5 +1,4 @@
-'use client';
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { Course } from "../api";
 
 interface ICourseCtx {
@@ -9,11 +8,3 @@ interface ICourseCtx {
 }
 
 export const CourseCtx = createContext<ICourseCtx | null>(null);
-
-export const useCourseCtx = () => {
-  const context = useContext(CourseCtx);
-  if (!context) {
-    throw new Error(`useCourseCtx использутся вне своего контекста`);
-  }
-  return context;
-};

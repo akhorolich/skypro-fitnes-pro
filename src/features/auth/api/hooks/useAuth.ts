@@ -3,7 +3,7 @@ import { useState } from "react";
 import { authApi } from "../auth";
 import type { LoginRequest, RegisterRequest } from "../types";
 import { ApiError } from "@/shared/api/client";
-import { useAuth } from "@/shared/context/auth-context";
+import { useAuth } from "@/shared/context/use-auth-context";
 
 export function useLogin() {
   const [loading, setLoading] = useState(false);

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Header } from "@/components/ui/header";
-import { ToastContainer } from "react-toastify";
-import { CoursesProvider } from "./providers/coursesProvider";
 import { Suspense } from "react";
+import { Providers } from "./providers";
 import "./globals.css";
-import { AuthProvider } from "./providers/authProvider";
 
 const RobotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -26,13 +24,12 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${RobotoSans.variable}`}>
         <main>
-          <AuthProvider>
+          <Providers>
             <Header />
-            <CoursesProvider>
-              <Suspense fallback={<p>Loading...</p>}><div id="page">{children}</div></Suspense>
-            </CoursesProvider>
-            <ToastContainer className="notifications" />
-          </AuthProvider>
+            <Suspense fallback={<p>Loading...</p>}>
+              <div id="page">{children}</div>
+            </Suspense>
+          </Providers>
         </main>
       </body>
     </html>
