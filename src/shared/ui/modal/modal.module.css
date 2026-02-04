@@ -16,3 +16,14 @@
   position: relative;
   align-self: center;
 }
+
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 16px;
+  }
+
+  .content {
+    padding: 0;
+  }
+}

@@ -13,3 +13,10 @@
     color: #fff;
     background-color: #000;
 }
+
+@media (max-width: 768px) {
+    .button {
+        width: fit-content;
+        height: fit-content;
+    }
+}

@@ -1,6 +1,6 @@
 .video__content {
     width: 100%;
-    padding-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .workout__name {
@@ -64,4 +64,36 @@
 
 .fill__btn:active {
     background-color: #000;
+}
+
+@media (max-width: 768px) {
+    .video__content {
+        margin-bottom: 24px;
+    }
+
+    .workout__name {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .video__wrapper {
+        height: 200px;
+    }
+
+    .lessons__container {
+        padding: 30px;
+    }
+
+    .lessons {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .fill__btn {
+        height: 52px;
+        width: 100%;
+    }
 }

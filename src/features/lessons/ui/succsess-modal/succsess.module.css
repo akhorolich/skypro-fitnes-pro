@@ -15,3 +15,12 @@
     color: #000;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .container {}
+
+    .text {
+        font-weight: 400;
+        font-size: 32px;
+    }
+}

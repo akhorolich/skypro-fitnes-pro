@@ -70,3 +70,15 @@
     text-align: center;
     color: #db0030;
 }
+
+@media (max-width: 768px) {
+    .form {
+        width: auto;
+    }
+
+
+    .signin__btn, .login__btn {
+        width: 100%;
+        height: 52px;
+    }
+}

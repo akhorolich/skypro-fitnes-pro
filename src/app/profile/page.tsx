@@ -23,7 +23,7 @@ export default function Profile() {
     logout();
     redirectTo(paths.home);
   };
-  
+
   const userCourses = getSelectedCourses(user?.selectedCourses, courses);
   
   return (
@@ -32,7 +32,7 @@ export default function Profile() {
         <div className={styles["profile-info"]}>
           <h2 className={styles["profile-info__text"]}>Профиль</h2>
           <div className={styles["profile-info__content"]}>
-            <Image src="/profile.svg" alt="profile" width={197} height={197} />
+            <Image className={styles.profile__img} src="/profile.svg" alt="profile" width={197} height={197} />
             <div className={styles.info}>
               <h3 className={styles.info__name}>{user?.email}</h3>
               <p>{`ID: ${user?._id}`}</p>

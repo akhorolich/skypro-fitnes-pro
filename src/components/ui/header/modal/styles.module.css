@@ -1,9 +1,11 @@
 .overlay {
     position: absolute;
+    top: 0;
+    right: 0;
     padding: 30px;
-    margin-top: 24px;
     border-radius: 30px;
     background-color: #fff;
+    margin-top: 64px;
     z-index: 100;
 }
 

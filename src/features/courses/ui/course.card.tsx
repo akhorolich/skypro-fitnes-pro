@@ -66,8 +66,6 @@ export const CourseCard = ({ course, isProfile = false }: CourseCardProps) => {
     if (isAuth && isProfile) {
       (async () => {
         try {
-          console.log('1');
-          
           const wks = await fetchWorkoutsCourse(course._id);
           setWorkouts(wks);
           const prog = await fetchCourseProgress(course._id);
@@ -139,13 +137,15 @@ export const CourseCard = ({ course, isProfile = false }: CourseCardProps) => {
         removeCourse={remove(course._id)}
         isProfile={isProfile}
       />
-      <Image
-        className={styles.img}
-        src={`/main_wk${course.order}.svg`}
-        alt="course"
-        width={360}
-        height={325}
-      />
+      <div className={styles.image__container}>
+        <Image
+          className={styles.img}
+          src={`/main_wk${course.order}.svg`}
+          alt="course"
+          width={360}
+          height={325}
+        />
+      </div>
       <div className={styles.course__content}>
         <h2 className={styles.course__title} onClick={openCourseInfo}>
           {course.nameRU}
@@ -172,7 +172,7 @@ export const CourseCard = ({ course, isProfile = false }: CourseCardProps) => {
         )}
         {isProfile && (
           <Button
-            className={styles.course__btn}
+            className={cn(styles.course__btn, styles.course__btn__mobile)}
             onClick={() => (courseCompleted ? onStart() : openWorkoutsModal())}
           >
             {courseCompleted

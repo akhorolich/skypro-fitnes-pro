@@ -6,7 +6,6 @@
 .course__img {
     border-radius: 30px;
     height: 310px;
-    font-family: var(--font-family);
 }
 
 .for-you {
@@ -36,17 +35,6 @@
     margin-bottom: 40px;
 }
 
-/* TODO: неверно отображаются направления */
-/* .directions__content {
-    display: flex;
-    flex-flow: row wrap;
-    column-gap: 124px;
-    align-items: flex-start;
-    height: 146px;
-    padding: 30px;
-    background-color: #bcec30;
-} */
-
 .directions__content {
     height: 146px;
     display: grid;
@@ -55,7 +43,7 @@
     padding: 30px;
     border-radius: 28px;
     align-items: center;
-    background-color: #bcec30;
+    background-color: #BCEC30;
 }
 
 .content {
@@ -130,4 +118,77 @@
     right: 0px;
     top: -93px;
     z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .for-you__text, .directions__text, .way__text {
+        font-weight: 500;
+        font-size: 24px;
+        color: #000;
+    }
+    .course__img {
+        display: none;
+    }
+
+    .wrapper__img {
+        border-radius: 30px;
+        margin-bottom: 40px;
+    }
+
+    .course__img__mobile {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+    }
+
+    .for-you__tiles {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .directions__content {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .list {
+        align-self: flex-start;
+        padding-left: 20px;
+    }
+
+    .list__item {
+        font-weight: 400;
+        font-size: 18px;
+        color: #000;
+        padding-bottom: 10px;
+    }
+
+    .way__content {
+        margin: 30px;
+    }
+
+    .way {
+        height: fit-content;
+        padding-top: 10px;
+        align-items: normal;
+        position: relative;
+        overflow: visible;
+        z-index: 2;
+    }
+
+    .way__img {
+        display: none;
+    }
+
+
+    .way__img__mobile {
+        position: absolute;
+        top: -215px;
+        right: -202px;
+        width: 638px;
+        height: 526px;
+        z-index: -1;
+    }
 }

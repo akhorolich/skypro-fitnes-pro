@@ -21,7 +21,7 @@ export default function Home() {
         <h1 className={styles.title__slogan}>
           Начните заниматься спортом и улучшите качество жизни
         </h1>
-        <Image src="/slogan.svg" alt="slogan" width={288} height={120} />
+        <Image className={styles.slogan__img} src="/slogan.svg" alt="slogan" width={288} height={120} />
       </div>
       <div className={styles.content}>
         {courses?.map((course) => (

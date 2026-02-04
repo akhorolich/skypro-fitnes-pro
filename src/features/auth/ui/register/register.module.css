@@ -71,3 +71,15 @@
     text-align: center;
     color: #db0030;
 }
+
+@media (max-width: 768px) {
+    .form {
+        width: auto;
+        gap: 34px;
+    }
+
+    .signup__btn, .register__btn {
+        width: 100%;
+        height: 52px;
+    }
+}

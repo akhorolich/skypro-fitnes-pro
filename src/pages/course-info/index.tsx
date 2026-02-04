@@ -47,6 +47,13 @@ export default function CourseInfo({ courseId }: CourseInfoProps) {
           width={1160}
           height={310}
         />
+        <Image
+          className={styles.course__img__mobile}
+          src={`/main_wk${course?.order}.svg`}
+          alt="yoga"
+          width={0}
+          height={0}
+        />
       </div>
       <div className={styles["for-you"]}>
         <h2 className={styles["for-you__text"]}>Подойдет для вас, если:</h2>
@@ -77,15 +84,29 @@ export default function CourseInfo({ courseId }: CourseInfoProps) {
               Начните путь <br />к новому телу
             </h2>
             <ul className={styles.list}>
-              <li className={styles.list__item}>проработка всех групп мышц</li>
-              <li className={styles.list__item}>тренировка суставов</li>
-              <li className={styles.list__item}>улучшение циркуляции крови</li>
-              <li className={styles.list__item}>
-                упражнения заряжают бодростью
-              </li>
-              <li className={styles.list__item}>
-                помогают противостоять стрессам
-              </li>
+              <div className={styles.item__wrapper}>
+                <li className={styles.list__item}>
+                  проработка всех групп мышц
+                </li>
+              </div>
+              <div className={styles.item__wrapper}>
+                <li className={styles.list__item}>тренировка суставов</li>
+              </div>
+              <div className={styles.item__wrapper}>
+                <li className={styles.list__item}>
+                  улучшение циркуляции крови
+                </li>
+              </div>
+              <div className={styles.item__wrapper}>
+                <li className={styles.list__item}>
+                  упражнения заряжают бодростью
+                </li>
+              </div>
+              <div className={styles.item__wrapper}>
+                <li className={styles.list__item}>
+                  помогают противостоять стрессам
+                </li>
+              </div>
             </ul>
             {!isAuth ? (
               <Button
@@ -119,6 +140,13 @@ export default function CourseInfo({ courseId }: CourseInfoProps) {
             height={688}
           />
         </div>
+        <Image
+          className={styles.way__img__mobile}
+          src="/info_way.svg"
+          alt="men"
+          width={700}
+          height={688}
+        />
       </div>
     </>
   );

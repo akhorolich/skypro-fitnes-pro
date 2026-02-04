@@ -11,7 +11,7 @@ import { useCourseCtx } from "@/shared/context/courses-context";
 import { Button } from "@/shared/ui/button";
 import { ProgressBar } from "@/shared/ui/progress-bar";
 import { Modal } from "@/shared/ui/modal";
-import { ProgressForm } from "../../features/lessons/lib/ProgressForm";
+import { ProgressForm } from "../../features/lessons/ui/progress-form/ProgressForm";
 import { SuccessModal } from "@/features/lessons/ui/succsess-modal";
 import styles from "./workout.module.css";
 

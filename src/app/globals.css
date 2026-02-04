@@ -46,11 +46,12 @@ p, h1, h2, h3 {
 }
 
 main {
-
   min-height: 100vh;
   background-color: #FAFAFA;
-  padding-left: calc(50% - 580px);  /* 140px */
-  padding-right: calc(50% - 580px);  /* 140px */
+  padding-left: calc(50% - 580px);
+  /* 140px */
+  padding-right: calc(50% - 580px);
+  /* 140px */
   padding-top: 50px;
 }
 
@@ -75,4 +76,14 @@ main {
 
 .notifications {
   z-index: 2000;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  #page {
+    margin-top: 40px;
+  }
 }
