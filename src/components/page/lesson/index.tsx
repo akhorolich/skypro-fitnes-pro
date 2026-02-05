@@ -97,8 +97,6 @@ export default function WorkoutLesson({ lessonId }: WorkoutLessonProps) {
     }
   };
 
-  console.log(lesson);
-
   return (
     <>
       <div className={styles.video__content}>
