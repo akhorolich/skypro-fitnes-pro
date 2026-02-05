@@ -35,6 +35,17 @@
     color: #000;
 }
 
+.noWk__text {
+    background-color: #BCEC30;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    width: fit-content;
+    padding: 5px;
+}
+
 .lessons {
     display: grid;
     grid-auto-flow: column;
@@ -82,6 +93,10 @@
 
     .lessons__container {
         padding: 30px;
+    }
+
+    .noWk__text {
+        font-size: 16px;
     }
 
     .lessons {

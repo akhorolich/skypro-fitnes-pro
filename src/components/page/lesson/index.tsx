@@ -97,6 +97,8 @@ export default function WorkoutLesson({ lessonId }: WorkoutLessonProps) {
     }
   };
 
+  console.log(lesson);
+
   return (
     <>
       <div className={styles.video__content}>
@@ -113,30 +115,41 @@ export default function WorkoutLesson({ lessonId }: WorkoutLessonProps) {
 
       <div className={styles.lessons__container}>
         <h2 className={styles.lesson__name}>{lesson?.name.split("/")[0]}</h2>
-        <div className={styles.lessons}>
-          {lesson?.exercises.map((exercis, index) => {
-            const done = progressArray[index] ?? 0;
-            const percent =
-              Math.round(
-                (Math.min(done, exercis.quantity) / exercis.quantity) * 100,
-              ) || 0;
-            return (
-              <div key={exercis._id}>
-                <p
-                  className={styles.exercis__name}
-                >{`${exercis.name.split("(")[0]} ${percent}%`}</p>
-                <ProgressBar value={percent} />
-              </div>
-            );
-          })}
-        </div>
+        {lesson?.exercises.length === 0 ? (
+          <h2 className={styles.noWk__text}>
+            Кажется по этому уроку нет заданий
+          </h2>
+        ) : (
+          <div className={styles.lessons}>
+            {lesson?.exercises.map((exercis, index) => {
+              const done = progressArray[index] ?? 0;
+              const percent =
+                Math.round(
+                  (Math.min(done, exercis.quantity) / exercis.quantity) * 100,
+                ) || 0;
+              return (
+                <div key={exercis._id}>
+                  <p
+                    className={styles.exercis__name}
+                  >{`${exercis.name.split("(")[0]} ${percent}%`}</p>
+                  <ProgressBar value={percent} />
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         {progress?.workoutCompleted ? (
           <Button className={styles.fill__btn} onClick={handleReset}>
             Повторить тренировку
           </Button>
         ) : (
-          <Button className={styles.fill__btn} onClick={handleOpenForm}>
+          <Button
+            className={styles.fill__btn}
+            onClick={() =>
+              lesson?.exercises.length === 0 ? handleSave([0]) : handleOpenForm()
+            }
+          >
             Заполнить свой прогресс
           </Button>
         )}

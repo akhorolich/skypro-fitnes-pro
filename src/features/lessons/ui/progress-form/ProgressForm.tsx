@@ -53,12 +53,13 @@ export const ProgressForm = ({
               aria-label={`Повторы ${exercis.name}`}
               {...register(`progress.${index}`, {
                 valueAsNumber: true,
-                min: { value: 1, message: "Не меньше 1" },
+                min: { value: 0, message: "Не меньше 0" },
                 max: {
                   value: exercis.quantity,
                   message: `Не больше ${exercis.quantity}`,
                 },
               })}
+              placeholder="0"
               className={styles.input}
             />
             <div className={styles.error}>

@@ -8,6 +8,7 @@
 
 .img {
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .course__content {

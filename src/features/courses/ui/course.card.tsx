@@ -80,8 +80,12 @@ export const CourseCard = ({ course, isProfile = false }: CourseCardProps) => {
     if (isProfile) return setIsOpen(true);
     router.push(`/course-info/${course._id}`);
   };
+
   const openWorkoutsModal = () => setIsOpen(true);
-  const closeWorkoutsModal = () => setIsOpen(false);
+  const closeWorkoutsModal = () => {
+    router.replace('/profile')
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (isAuth && isProfile) {
@@ -142,6 +146,7 @@ export const CourseCard = ({ course, isProfile = false }: CourseCardProps) => {
           alt="course"
           width={360}
           height={325}
+          onClick={openCourseInfo}
         />
       </div>
       <div className={styles.course__content}>

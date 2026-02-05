@@ -188,6 +188,7 @@
 
 
     .way__img__mobile {
+        display: block;
         position: absolute;
         top: -215px;
         right: -202px;
