@@ -23,6 +23,7 @@ export function useLogin() {
     } catch (err) {
       const requestError = err as ApiError;
       setError(requestError.message);
+      throw err;
     } finally {
       setLoading(false);
     }
