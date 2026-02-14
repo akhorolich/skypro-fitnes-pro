@@ -1,0 +1,114 @@
+.video__content {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.workout__name {
+    font-weight: 500;
+    font-size: 60px;
+    color: #000;
+    margin-bottom: 40px;
+}
+
+.video__wrapper {
+    max-height: 639px;
+    height: 100vh;
+}
+
+.video {
+    border-radius: 30px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.lessons__container {
+    width: 100%;
+    padding: 40px;
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.lessons__name {
+    font-weight: 400;
+    font-size: 32px;
+    color: #000;
+}
+
+.noWk__text {
+    background-color: #BCEC30;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    width: fit-content;
+    padding: 5px;
+}
+
+.lessons {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 40px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.exercis__name {
+    font-weight: 400;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.fill__btn {
+    width: 340px;
+    background-color: #BCEC30;
+}
+
+.fill__btn:hover {
+    background-color: #C6FF00;
+}
+
+.fill__btn:active {
+    background-color: #000;
+}
+
+@media (max-width: 768px) {
+    .video__content {
+        margin-bottom: 24px;
+    }
+
+    .workout__name {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .video__wrapper {
+        height: 200px;
+    }
+
+    .lessons__container {
+        padding: 30px;
+    }
+
+    .noWk__text {
+        font-size: 16px;
+    }
+
+    .lessons {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .fill__btn {
+        height: 52px;
+        width: 100%;
+    }
+}

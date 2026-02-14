@@ -1,0 +1,36 @@
+.tile__container {
+    width: 368px;
+    height: 141px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    border-radius: 28px;
+    background: linear-gradient(152deg, #151720 0%, #1e212e 100%);
+}
+
+.number {
+    font-weight: 500;
+    font-size: 75px;
+    line-height: 135%;
+    color: #bcec30;
+}
+
+.description {
+    font-weight: 400;
+    font-size: 24px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .tile__container {
+        width: auto;
+    }
+
+    .description {
+        font-weight: 400;
+        font-size: 18px;
+        color: #fff;
+    }
+}
